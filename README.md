@@ -29,7 +29,7 @@ var x: int = 10 + 10 ; salida: 20
 
 ### funciones:
 #### En nuestro lenguaje la declaración de funciones es simple solamente basta con escribir el nombre de la palabra `fn` posterior el nombre de la función
-```javascript
+```rust
 fn suma(a: int, b: int): int {
     return a + b;
 }
