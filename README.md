@@ -57,6 +57,56 @@ fn suma(a: int, b: int): int {
 * `--` : decremento
 
 
-###  Estrucuturas de datos: 
+###  Estrucuturas de datos:
+Arithmo perimite el uso de estructuras de datos convencionals como lo son:
+* `[]` : array 
+* `{}` : diccionario
+* `[][]` : matriz
 
+### Bucles:
+#### Asi se veria un par de ciclos
+```python
+while () {
+    var x: int = 0;
+    while x < 10 {
+        x++;
+    }
+}
 
+do {
+    var x: int = 0;
+    while x < 10 {
+        x++;
+    }
+} while ();
+
+for (var i: int = 0; i < 10; i++) {
+    print(i);
+}
+```
+
+### Condiciones:
+#### Asi se veria una condicion
+```javascript
+if (x == 10) {
+    print("x es igual a 10");
+} else if (x != 10) {
+    print("x no es igual a 10");
+} else {
+    return 0;
+}
+
+switch (x) {
+    case 1:
+        print("x es igual a 1");
+        continue;
+    case 2:
+        print("x es igual a 2");
+        continue;
+    deft:
+        print("x no es igual a 1 o 2");
+        break;
+}
+```
+
+### Palabras reservadas:
