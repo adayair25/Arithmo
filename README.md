@@ -4,20 +4,20 @@
 
 ### Arithmo example code
 #### En nuestro lenguaje la declaración de variables es simple solamente basta con escribir el nombre de la palabra `var` seguido del tipo de dato  y posterior el nombre de la variable y puede ser opcional; la manera en la que inicializa.
-```python
+```javascript
 var x: srg = "Hello World"; 
 ```
 ### Tambien se pueden declarar variables que no se les haya asignado un valor del mismo tipo en una sola linea, como se muestra en el siguiente ejemplo.
-```python
-var x,y,z: int;
+```javascript
+var x,y: int;
 ```
 
 ##### En caso de las constantes su declaracion es similar a la de las variables, solo que en vez de la palabra `var` se utiliza `const` y el valor de la constante no puede ser cambiado.
-```python
+```javascript
 const x: int = 10;
 ```
 ### En nuestro lenguaje se pueden realizar operaciones aritmeticas de manera sencilla, como se muestra en el siguiente ejemplo.
-```python
+```java
 var x: int = 10 + 10 ; salida: 20 
 ```
 ### El lenguaje permite el uso de diferentes tipos de datos, a continuacion se indica la manera en la que usar cada uno:
@@ -29,7 +29,7 @@ var x: int = 10 + 10 ; salida: 20
 
 ### funciones:
 #### En nuestro lenguaje la declaración de funciones es simple solamente basta con escribir el nombre de la palabra `fn` posterior el nombre de la función
-```python
+```javascript
 fn suma(a: int, b: int): int {
     return a + b;
 }
@@ -65,7 +65,7 @@ Arithmo perimite el uso de estructuras de datos convencionals como lo son:
 
 ### Bucles:
 #### Asi se veria un par de ciclos
-```python
+```javascript
 while () {
     var x: int = 0;
     while x < 10 {
