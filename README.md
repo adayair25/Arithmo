@@ -110,3 +110,43 @@ switch (x) {
 ```
 
 ### Palabras reservadas:
+#### Las palabras reservadas de nuestro lenguaje son las siguientes:
+* `var` : variable
+* `const` : constante
+* `fn` : funcion
+* `if` : condicion
+* `else` : condicion
+* `while` : ciclo
+* `do` : ciclo
+* `for` : ciclo
+* `switch` : condicion
+* `case` : condicion
+* `deft` : condicion
+* `continue` : condicion
+* `break` : condicion
+* `return` : condicion
+* `print` : imprimir
+* `int` : entero
+* `flt` : flotante
+* `srg` : cadena
+* `bool` : booleano
+* `dbl` : doble
+* `true` : verdadero
+* `false` : falso
+* `++` : incremento
+* `--` : decremento
+* `*` : multiplicacion
+* `/` : division
+* `==` : comparacion
+* `!=` : diferente
+* `>=` : mayor o igual que
+* `<=` : menor o igual que
+* `%` : modulo
+* `\` : raiz
+* `^` : potencia
+* `&&` : and
+* `||` : or
+* `!` : not
+* `[]` : array
+* `{}` : diccionario
+* `[][]` : matriz
