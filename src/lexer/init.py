@@ -1,14 +1,15 @@
 import re
 
 TOKENS = [
-    ('NUMBER', r'\d+(\.\d*)?'), # search for numbers
-    ('STRING', r'\".*?\"'),
+    ('NUMBER', r'\d+(\.\d*)?'),  # search for numbers
+    ('STRING', r'\".*?\"'),      # search for strings
 ]
 
 def lexer(input_string):
     tokens = []
     while len(input_string) > 0:
         match = None
+        input_string = input_string.lstrip()  # Remove leading whitespace
         for token in TOKENS:
             name, pattern = token
             regex = re.compile(pattern)
@@ -17,10 +18,10 @@ def lexer(input_string):
                 value = match.group(0)
                 tokens.append((name, value))
                 input_string = input_string[len(value):]
-                return tokens
                 break
         if not match:
             raise Exception('Error: unexpected character %s' % input_string[0])
-   
+    return tokens
 
-lexer('hola')
+# Test the lexer function
+print(lexer('35 "hello" 3.14'))
