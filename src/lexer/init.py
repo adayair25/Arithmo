@@ -3,14 +3,14 @@ import re # Import the regular expression module
 TOKENS = [
     ('VAR', r'^var'), # variable declaration
     #('INT', r'\d+'), # integer
-    #('FLOAT', r'\d+\.\d*'),
+    #('FLOAT', r'\d+\.\d+'),
     ('COLON', r':'), # search for :
     ('TYPES', r'\b(int|float|double|bool)\b'), # search for int, float, double, bool              
-    ('VAR_DECLARED', r'\b(\w+)\b'), # search for variable name
     ('EQUAL', r'='), # search for =
-    ('VALUE', r'(\"\w+\")'), # search for value
+    ('VALUE', r'(\"\w+\"|\d+\.?\d*)'), # search for value
     ('SEMICOLON', r';$'), # search for ;
     ('PLUS', r'\+'), # search for +
+    ('VAR_DECLARED', r'(\w+)'), # search for variable name
 
     # EXPERIMENTAL TOKENS
     ('MINUS', r'-'), # search for -
@@ -40,8 +40,7 @@ def lexer(input_string):
     return tokens # Return the list of tokens
 
 # Test the lexer function
-print(lexer('var MyVar: int = "Hiiii";')) # Output: [('VAR', 'var'), ('VAR_DECLARED', 'MyVar'), ('COLON', ':'), ('TYPES', 'int'), ('EQUAL', '='), ('VALUE', '"Hiiii"'), ('SEMICOLON', ';')]
-
+print(lexer('var MyVar: float = 34.;')) 
 """
     Tokenizes the input string by matching it against a list of predefined tokens.
 
