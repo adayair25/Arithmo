@@ -7,7 +7,7 @@ TOKENS = [
     ('COLON', r':'), # search for :
     ('TYPES', r'\b(int|float|double|bool)\b'), # search for int, float, double, bool              
     ('EQUAL', r'='), # search for =
-    ('VALUE', r'(\"\w+\"|\d+\.?\d*)'), # search for value
+    ('VALUE', r'(\"\w+\"|\d+\.?\d+)'), # search for value
     ('SEMICOLON', r';$'), # search for ;
     ('PLUS', r'\+'), # search for +
     ('VAR_DECLARED', r'(\w+)'), # search for variable name
@@ -40,7 +40,7 @@ def lexer(input_string):
     return tokens # Return the list of tokens
 
 # Test the lexer function
-print(lexer('var MyVar: float = 34.;')) 
+print(lexer('var MyVar: float = 34.0;')) 
 """
     Tokenizes the input string by matching it against a list of predefined tokens.
 
