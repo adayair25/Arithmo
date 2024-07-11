@@ -1,21 +1,29 @@
 import re # Import the regular expression module
 
 TOKENS = [
-    ('NUMBER', r'\d+(\.\d*)?'),  # search for numbers
-    ('STRING', r'\".*?\"'),      # search for strings
+    ('VAR', r'^var'),
+    ('INT', r'\d+'),
+    ('FLOAT', r'\d+\.\d*'),
+    ('COLON', r':'),
+    ('TYPES', r'\b(int|float|double|bool)\b'),              
+    ('VAR_DECLARED', r'\b(\w+)\b'),
+    ('EQUAL', r'='),
+    ('VALUE', r'(\"\w+\")'),
+    ('SEMICOLON', r';$'),
+    ('PLUS', r'\+'),            
 ]
 
 def lexer(input_string):
     tokens = []
     while len(input_string) > 0:
         match = None
-        input_string = input_string.strip(" ")  # Remove leading whitespace
+        input_string = input_string.strip(" ") # Remove leading whitespace
         for token in TOKENS:
             name, pattern = token
             regex = re.compile(pattern)
             match = regex.match(input_string)
             if match:
-                value = match.group(0)
+                value = match.group()
                 tokens.append((name, value))
                 input_string = input_string[len(value):]
                 break
@@ -24,4 +32,4 @@ def lexer(input_string):
     return tokens
 
 # Test the lexer function
-print(lexer('35 "Hello" "from" "GPT-4" 3.14')) # "Hello World from GPT-4 3.14" -> [('NUMBER', '35'), ('STRING', '"Hello"'), ('STRING', '"from"'), ('STRING', '"GPT-4"'), ('NUMBER', '3.14')]
+print(lexer('var MyVar: int = "Hiiii";'))
