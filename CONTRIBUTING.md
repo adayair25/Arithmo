@@ -27,4 +27,4 @@ If you encounter any issues or bugs while using Arithmo, please report them usin
 
 ## Contact
 
-<p>Pending..</p>
+<p>Pending...</p>
