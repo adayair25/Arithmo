@@ -14,7 +14,8 @@ To get started with contributing, please follow these steps:
 6. Submit a pull request to the main Arithmo repository.
 
 
-[!IMPORTANT] Create a virtual environment for the project before installing the dependencies.
+[!IMPORTANT] 
+Create a virtual environment for the project before installing the dependencies.
 
 ## Create an virtual environment for the project, called `venv`
 
