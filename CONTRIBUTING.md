@@ -27,6 +27,10 @@ $ python3 -m venv venv
 ```bash
 $ python -m venv venv
 ```
+## activate venv MacOs and Linux
+```bash
+source venv/bin/activate
+```
 
 ## Code Style
 
