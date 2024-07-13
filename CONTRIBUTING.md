@@ -13,6 +13,21 @@ To get started with contributing, please follow these steps:
 5. Commit your changes and push them to your forked repository, the commit should have a emoji ✅.
 6. Submit a pull request to the main Arithmo repository.
 
+
+[!NOTE]
+Create a virtual environment for the project before installing the dependencies.
+
+## Create an virtual environment for the project, called `venv`
+
+### MacOS and Linux:
+```bash
+$ python3 -m venv venv
+```
+### Windows:
+```bash
+$ python -m venv venv
+```
+
 ## Code Style
 
 Please adhere to the following code style guidelines when contributing to Arithmo:
