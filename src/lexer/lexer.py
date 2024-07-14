@@ -1,4 +1,4 @@
-from .tokens import TOKENS # Import the list of TOKENS
+from tokens import TOKENS # Import the list of TOKENS
 import re # Import the regular expression module
 
 class Lexer:
