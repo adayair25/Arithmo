@@ -1,18 +1,19 @@
-from tokens import TOKENS # Import the list of TOKENS
 import re # Import the regular expression module
 
 class Lexer:
-    def __init__(self) -> None:
-        pass
+    def __init__(self):
+        self.tokens = []
+    
+    def add_token(self, tokens_list):
+        for name, pattern in tokens_list: # Unpack the token tuple
+            self.tokens.append((name, re.compile(pattern))) # Compile the regular expression pattern
 
     def tokenize(self, input_string):
         tokens = []
         while len(input_string) > 0:
             match = None # Initialize match to None
             input_string = input_string.strip(" ") # Remove leading whitespace
-            for token in TOKENS: 
-                name, pattern = token # Unpack the token tuple
-                regex = re.compile(pattern) # Compile the regular expression pattern
+            for name, regex in self.tokens: 
                 match = regex.match(input_string) # Match the pattern against the input string
                 if match:
                     value = match.group() # Get the matched value
