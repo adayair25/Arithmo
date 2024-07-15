@@ -1,21 +1,29 @@
 from lexer.lexer import Lexer
 from lexer.tokens import TOKENS # Import the list of TOKENS
 from parser.parser import Parser
-# testcode = "for (var i: int = 0; i < 10; i++) { print(i);})"
 
-testcode = "Hello, world!"
+testcode = "var i: int = 0;"
 
-syntax = '''start: WORD","WORD"!"
+syntax = '''
+         start: declaration
+         declaration: VAR IDENTIFIER COLON TYPE EQUALITY VALUE SEMICOLON
 
-            %import common.WORD   // imports from terminal library
-            %ignore " "           // Disregard spaces in text
-         '''
-#print(*[token[1] for token in tokens], sep="")
+         VAR: "var"
+         IDENTIFIER: /[a-zA-Z_][a-zA-Z0-9_]*/
+         COLON: ":"
+         TYPE: "int" | "float" | "string"
+         EQUALITY: "="
+         VALUE: /\d+/
+         SEMICOLON: ";"
+         
+         %import common.WORD   // imports from terminal library
+         %ignore " "           // Disregard spaces in text
+       '''
 
 lexer = Lexer()
 lexer.add_token(TOKENS)
 tokens = lexer.tokenize(testcode)
-print(tokens)
+#print(tokens)
 
 parser = Parser(syntax)
 print(parser.parsing(tokens))

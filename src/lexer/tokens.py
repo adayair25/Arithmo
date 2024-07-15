@@ -26,9 +26,9 @@ TOKENS = [
     #('OPERATORS', r'\b(and|or|not)\b'), # search for and, or, not
     ('GREATER', r'>'), # search for >
     ('LESS', r'<'), # search for <
-    ('DOUBLE_EQUAL', r'='), # search for =
+    ('EQUALITY', r'='), # search for =
 
-    ('EQUALITY', r'=='), # search for ==
+    ('DOUBLE_EQUAL', r'=='), # search for ==
     ('INEQUALITY', r'!='), # search for !=
     ('GREATER_EQUAL', r'>='), # search for >=
     ('LESS_EQUAL', r'<='), # search for <=

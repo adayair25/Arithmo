@@ -1,4 +1,4 @@
-from lark import Lark #type: ignore
+from lark import Lark, Token #type: ignore
 
 class Parser:
     def __init__(self, syntax):
@@ -6,5 +6,5 @@ class Parser:
 
     # Analiza la cadena o lista de tokens según la sintaxis
     def parsing(self, tokens):
-        return self.parser.parse(''.join(token[1] for token in tokens))
+        return self.parser.parse(''.join(token[1] for token in tokens)) # Devuelve el árbol de análisis
     
