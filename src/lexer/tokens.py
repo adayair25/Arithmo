@@ -50,3 +50,6 @@ TOKENS = [
 
     # EXPERIMENTAL TOKENS
 ]
+
+#Transform the tokens into a dictionary
+TOKENS = dict(TOKENS)

@@ -4,26 +4,26 @@ from parser.parser import Parser
 
 testcode = "var i: int = 0;"
 
-syntax = '''
+syntax = f'''
          start: declaration
-         declaration: VAR IDENTIFIER COLON TYPE EQUALITY VALUE SEMICOLON
+         declaration: VAR IDENTIFIER COLON TYPES EQUALITY VALUE SEMICOLON
 
-         VAR: "var"
-         IDENTIFIER: /[a-zA-Z_][a-zA-Z0-9_]*/
-         COLON: ":"
-         TYPE: "int" | "float" | "string"
-         EQUALITY: "="
-         VALUE: /\d+/
-         SEMICOLON: ";"
+         VAR: /{TOKENS['VAR']}/
+         IDENTIFIER: /{TOKENS['IDENTIFIER']}/
+         COLON: /{TOKENS['COLON']}/
+         TYPES: /{TOKENS['TYPES']}/
+         EQUALITY: /{TOKENS['EQUALITY']}/
+         VALUE: /{TOKENS['VALUE']}/
+         SEMICOLON: /{TOKENS['SEMICOLON']}/
          
          %import common.WORD   // imports from terminal library
          %ignore " "           // Disregard spaces in text
        '''
+#print(syntax)
 
 lexer = Lexer()
 lexer.add_token(TOKENS)
 tokens = lexer.tokenize(testcode)
 #print(tokens)
-
 parser = Parser(syntax)
 print(parser.parsing(tokens))

@@ -5,7 +5,7 @@ class Lexer:
         self.tokens = []
     
     def add_token(self, tokens_list):
-        for name, pattern in tokens_list: # Unpack the token tuple
+        for name, pattern in tokens_list.items(): # Unpack the token tuple
             self.tokens.append((name, re.compile(pattern))) # Compile the regular expression pattern
 
     def tokenize(self, input_string):
