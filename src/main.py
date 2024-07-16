@@ -1,29 +1,12 @@
-from lexer.lexer import Lexer
+from lexer.lexer import Lexer # Import the lexer
 from lexer.tokens import TOKENS # Import the list of TOKENS
-from parser.parser import Parser
+from parser.parser import Parser # Import the parser
+from parser.syntax import SYNTAX # Import the list of SYNTAX
 
-testcode = "var i: int = 0;"
+testcode = "var i: int = 000000007654.2345678;" # Test object code
 
-syntax = f'''
-         start: declaration
-         declaration: VAR IDENTIFIER COLON TYPES EQUALITY VALUE SEMICOLON
-
-         VAR: /{TOKENS['VAR']}/
-         IDENTIFIER: /{TOKENS['IDENTIFIER']}/
-         COLON: /{TOKENS['COLON']}/
-         TYPES: /{TOKENS['TYPES']}/
-         EQUALITY: /{TOKENS['EQUALITY']}/
-         VALUE: /{TOKENS['VALUE']}/
-         SEMICOLON: /{TOKENS['SEMICOLON']}/
-         
-         %import common.WORD   // imports from terminal library
-         %ignore " "           // Disregard spaces in text
-       '''
-#print(syntax)
-
-lexer = Lexer()
-lexer.add_token(TOKENS)
-tokens = lexer.tokenize(testcode)
-#print(tokens)
-parser = Parser(syntax)
-print(parser.parsing(tokens))
+lexer = Lexer() # Create a lexer object
+lexer.add_token(TOKENS) # Add the tokens to the lexer
+tokens = lexer.tokenize(testcode) # Tokenize the test code
+parser = Parser(SYNTAX) # Create a parser object
+print(parser.parsing(tokens)) # Parse the tokens

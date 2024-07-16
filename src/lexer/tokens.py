@@ -19,15 +19,11 @@ TOKENS = [
     ('RBRACKET', r'\]'), # search for ]
     ('COMMA', r','), # search for ,
     ('RETURN', r'return'), # return statement
-    #('INT', r'\d+'), # integer
-    #('FLOAT', r'\d+\.\d+'),
     ('COLON', r':'), # search for :
-    ('TYPES', r'\b(int|flt|dbl|bool)\b'), # search for int, float, double, bool              
-    #('OPERATORS', r'\b(and|or|not)\b'), # search for and, or, not
+    ('TYPES', r'\b(srg|int|flt|dbl|bool)\b'), # search for int, float, double, bool              
     ('GREATER', r'>'), # search for >
     ('LESS', r'<'), # search for <
     ('EQUALITY', r'='), # search for =
-
     ('DOUBLE_EQUAL', r'=='), # search for ==
     ('INEQUALITY', r'!='), # search for !=
     ('GREATER_EQUAL', r'>='), # search for >=
@@ -42,13 +38,10 @@ TOKENS = [
     ('EXPONENT', r'\^'), # search for ^
     ('REMAINDER', r'%'), # search for %
     ('PLUS_DOUBLE', r'\+\+'), # search for ++
-    #('IDENTIFIER', r'\b\w+\b'), # search for variable name
     ('VALUE', r'(\"\w+\"|\d*\.?\d+)'), # search for value
     ('SEMICOLON', r';'), # search for ;
     ('IDENTIFIER', r'(\w+)'), # search for variable name
     ('BOOLEAN', r'\b(true|false)\b'), # search for true, false
-
-    # EXPERIMENTAL TOKENS
 ]
 
 #Transform the tokens into a dictionary
