@@ -1,4 +1,4 @@
-import re # Import the regular expression module
+import re
  
 
 class Lexer:
@@ -22,13 +22,15 @@ class Lexer:
                     input_string = input_string[len(value):] # Remove the token from the input string
                     break
             if not match:
-                raise Exception('Error: unexpected character %s' % input_string[0]) # Raise an exception if an unexpected character is encountered
+                print(f"Unexpected character: '{input_string[0]}'")  # Agregado para depuración
+                raise Exception(f'Error: unexpected character "{input_string[0]}" at position {len(input_string)}') # Raise an exception if an unexpected character is encountered
         return tokens # Return the list of tokens
-    
-    @staticmethod
-    def read_file(file_path): 
+
+    def tokenize_file(self, file_path):  #Metodo para leer una linea de un archivo
         with open(file_path, 'r') as file:
-            return file.read()
+            content = file.read()
+        return self.tokenize(content)
+
 
 """
 Tokenizes the input string by matching it against a list of predefined tokens.

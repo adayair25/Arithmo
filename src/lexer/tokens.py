@@ -20,7 +20,7 @@ TOKENS = [
     ('COMMA', r','),           # search for ,
     ('RETURN', r'return'),     # return statement
     ('COLON', r':'),           # search for :
-    ('TYPES', r'\b(int|flt|dbl|bool)\b'), # search for int, float, double, bool
+    ('TYPES', r'\b(int|flt|dbl|bool|srg)\b'),   # search for int, float, double, bool
     ('GREATER', r'>'),         # search for >
     ('LESS', r'<'),            # search for <
     ('EQUALITY', r'='),        # search for =
@@ -38,10 +38,10 @@ TOKENS = [
     ('EXPONENT', r'\^'),       # search for ^
     ('REMAINDER', r'%'),       # search for %
     ('PLUS_DOUBLE', r'\+\+'),  # search for ++
-    ('VALUE', r'\".*?\"|\d+(\.\d+)?'), # search for value
+    ('VALUE', r'\".*?\"|\d+(\.\d+)?'),  # search for value
     ('SEMICOLON', r';'),       # search for ;
-    ('IDENTIFIER', r'(\w+)'),  # search for variable name
-    ('BOOLEAN', r'\b(true|false)\b') # search for true, false
+    ('IDENTIFIER', r'[a-zA-Z_]\w*'),  # search for variable name
+    ('BOOLEAN', r'\b(true|false)\b')  #search for true, false
     ]
 
 #Transform the tokens into a dictionary

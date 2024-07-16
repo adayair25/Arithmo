@@ -1,2 +1,1 @@
-var x: string = "Hello world";
-print(x);
+var x: srg = "Hello World";
