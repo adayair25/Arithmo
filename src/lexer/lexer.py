@@ -1,4 +1,5 @@
 import re # Import the regular expression module
+ 
 
 class Lexer:
     def __init__(self):
@@ -23,6 +24,11 @@ class Lexer:
             if not match:
                 raise Exception('Error: unexpected character %s' % input_string[0]) # Raise an exception if an unexpected character is encountered
         return tokens # Return the list of tokens
+    
+    @staticmethod
+    def read_file(file_path): 
+        with open(file_path, 'r') as file:
+            return file.read()
 
 """
 Tokenizes the input string by matching it against a list of predefined tokens.
