@@ -1,4 +1,4 @@
-from lark import Lark, Token #type: ignore
+from lark import Lark, Token
 
 class Parser:
     def __init__(self, syntax):
