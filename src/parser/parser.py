@@ -6,5 +6,5 @@ class Parser:
 
     # Analiza la cadena o lista de tokens según la sintaxis
     def parsing(self, tokens):
-        return self.parser.parse(''.join(token[1] for token in tokens)) # Devuelve el árbol de análisis
+        return self.parser.parse(''.join(token[1] for token in tokens)).pretty() # Devuelve el árbol de análisis
     
