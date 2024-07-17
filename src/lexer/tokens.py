@@ -1,6 +1,6 @@
 TOKENS = [
-    ('VAR', r'var\s'),         # variable declaration
-    ('FUNCTION', r'fn\s'),     # function declaration
+    ('VAR', r'var'),         # variable declaration
+    ('FUNCTION', r'fn'),     # function declaration
     ('IF', r'if\s'),           # if statement
     ('ELSE', r'else\s'),       # else statement
     ('WHILE', r'while\s'),     # while statement
@@ -13,7 +13,7 @@ TOKENS = [
     ('PRINT', r'print'),       # print statement
     ('LPAREN', r'\('),         # search for (
     ('RPAREN', r'\)'),         # search for )
-    ('LBRACE', r'\{'),         # search for {
+    ('LBRACE', r'\{\s'),         # search for {
     ('RBRACE', r'\}'),         # search for }
     ('LBRACKET', r'\['),       # search for [
     ('RBRACKET', r'\]'),       # search for ]

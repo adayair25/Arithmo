@@ -27,7 +27,7 @@ class Lexer:
 
     def tokenize_file(self, file_path):  #Metodo para leer una linea de un archivo
         with open(file_path, 'r') as file:
-            content = file.read()
+            content = file.read().replace('\n', '') # Read the file and remove newline characters
         return self.tokenize(content)
 
 

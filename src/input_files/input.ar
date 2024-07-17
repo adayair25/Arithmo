@@ -1,1 +1,14 @@
 var x: srg = "Hello World";
+
+fn MyFunction (a: srg) {
+    print(a);
+};
+
+for (var i: int = 0; i < 10; i++) {
+    print(i);
+};
+
+fn (a: int, b: int) {
+    return a + b;
+};
+

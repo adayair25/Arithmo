@@ -21,7 +21,7 @@ syntax = f'''
 
 lexer = Lexer()
 lexer.add_token(TOKENS)
-ruta_archivo = 'input_files/input.ar'
-input_string = lexer.tokenize_file(ruta_archivo)
+route = 'input_files/input.ar'
+input_string = lexer.tokenize_file(route)
 
 print(input_string)
