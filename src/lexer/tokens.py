@@ -13,7 +13,7 @@ TOKENS = [
     ('PRINT', r'print'),       # print statement
     ('LPAREN', r'\('),         # search for (
     ('RPAREN', r'\)'),         # search for )
-    ('LBRACE', r'\{\s'),         # search for {
+    ('LBRACE', r'\{'),         # search for {
     ('RBRACE', r'\}'),         # search for }
     ('LBRACKET', r'\['),       # search for [
     ('RBRACKET', r'\]'),       # search for ]
