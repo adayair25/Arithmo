@@ -1,6 +1,5 @@
 import re
  
-
 class Lexer:
     def __init__(self):
         self.tokens = []
