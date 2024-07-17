@@ -8,9 +8,9 @@ from parser.syntax import SYNTAX # Import the list of SYNTAX
 lexer = Lexer() # Create a lexer object
 lexer.add_token(TOKENS) # Add the tokens to the lexer
 #tokens = lexer.tokenize(testcode) # Tokenize the test code
-parser = Parser(SYNTAX) # Create a parser object
+parser = Parser(SYNTAX["STATEMENT_WITH_TYPE"]) # Create a parser object
 
 
-route = 'input_files/input.ar'
+route = 'src/input_files/input.ar'
 input_string = lexer.tokenize_file(route)
 print(parser.parsing(input_string)) # Parse the tokens
