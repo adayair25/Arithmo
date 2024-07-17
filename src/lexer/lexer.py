@@ -13,7 +13,7 @@ class Lexer:
         tokens = []
         while len(input_string) > 0:
             match = None # Initialize match to None
-            input_string = input_string.strip(" ") # Remove leading whitespace
+            input_string = input_string.strip(" ")# Remove leading whitespace
             for name, regex in self.tokens: 
                 match = regex.match(input_string) # Match the pattern against the input string
                 if match:
@@ -28,7 +28,7 @@ class Lexer:
 
     def tokenize_file(self, file_path):  #Metodo para leer una linea de un archivo
         with open(file_path, 'r') as file:
-            content = file.read()
+            content = file.read().replace('\n', '')
         return self.tokenize(content)
 
 

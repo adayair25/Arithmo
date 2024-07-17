@@ -1,1 +1,10 @@
-var x: srg = "Hello World";
+fn Myfunc (a: int, b: int) {
+    return a + b;
+};
+
+fn main () {
+    let a = 1;
+    let b = 2;
+    let c = Myfunc(a, b);
+    return c;
+};
