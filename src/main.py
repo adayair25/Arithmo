@@ -13,7 +13,6 @@ for token in tokens:
 
 parser = None
 
-parser = None
 for key in TOKENS.keys():
     if key == tokens[0][0]:
         parser = Parser(SYNTAX[key])
