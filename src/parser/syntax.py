@@ -2,9 +2,8 @@ from lexer.tokens import TOKENS #type: ignore # Import the list of TOKENS
 
 SYNTAX = {
     'VAR': f'''
-         start: code_block
-         code_block: statement+
-         ?statement: set_var 
+         start: code_block+
+         code_block: set_var 
          
          set_var: VAR IDENTIFIER COLON TYPES EQUALITY VALUE SEMICOLON | VAR IDENTIFIER EQUALITY VALUE SEMICOLON
       
