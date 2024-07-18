@@ -12,8 +12,11 @@ for token in tokens:
     print(f"Tipo: {token[0]}, Valor: {token[1]}")
 
 parser = None
+
+parser = None
 for key in TOKENS.keys():
     if key == tokens[0][0]:
         parser = Parser(SYNTAX[key])
         break
-print(parser.parsing(tokens))
+    
+print(parser.parsing(tokens)) # Parse the tokens
