@@ -1,3 +1,1 @@
-var x : srg = "Hello";
-
-var y : srg = "Yiyi";
+var x,y : srg = "Hello";

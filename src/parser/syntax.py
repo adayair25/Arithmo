@@ -5,7 +5,7 @@ SYNTAX = {
          start: code_block+
          code_block: set_var 
          
-         set_var: VAR IDENTIFIER COLON TYPES EQUALITY VALUE SEMICOLON | VAR IDENTIFIER EQUALITY VALUE SEMICOLON
+         set_var: VAR IDENTIFIER (COMMA IDENTIFIER)? COLON TYPES EQUALITY VALUE SEMICOLON | VAR IDENTIFIER EQUALITY VALUE SEMICOLON
       
          VAR: /{TOKENS['VAR']}/
          IDENTIFIER: /{TOKENS['IDENTIFIER']}/
@@ -14,6 +14,7 @@ SYNTAX = {
          EQUALITY: /{TOKENS['EQUALITY']}/
          VALUE: /{TOKENS['VALUE']}/
          SEMICOLON: /{TOKENS['SEMICOLON']}/
+          COMMA: /{TOKENS['COMMA']}/
          
          %ignore " "           // Disregard spaces in text
        ''',

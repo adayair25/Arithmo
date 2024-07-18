@@ -40,7 +40,7 @@ TOKENS = [
     ('PLUS_DOUBLE', r'\+\+'), # search for ++
     ('VALUE', r'\".*?\"|\d+(\.\d+)?'), # search for value
     ('SEMICOLON', r';'), # search for ;
-    ('IDENTIFIER', r'[a-zA-Z_]\w*'), # search for variable name
+    ('IDENTIFIER', r'\w+'), # search for variable name
     ('BOOLEAN', r'\b(true|false)\b') #search for true, false
     ]
 
