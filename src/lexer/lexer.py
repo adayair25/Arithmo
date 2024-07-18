@@ -1,5 +1,5 @@
 import re
- 
+import os
 class Lexer:
     def __init__(self):
         self.tokens = []
@@ -12,7 +12,7 @@ class Lexer:
         tokens = []
         while len(input_string) > 0:
             match = None # Initialize match to None
-            input_string = input_string.strip(" ") # Remove leading whitespace
+            input_string = input_string.strip(" \n") # Remove leading whitespace
             for name, regex in self.tokens: 
                 match = regex.match(input_string) # Match the pattern against the input string
                 if match:
@@ -21,14 +21,21 @@ class Lexer:
                     input_string = input_string[len(value):] # Remove the token from the input string
                     break
             if not match:
-                print(f"Unexpected character: '{input_string[0]}'")  # Agregado para depuración
+                print(f"Unexpected character: '{input_string[0]}'") # Added for debugging
                 raise Exception(f'Error: unexpected character "{input_string[0]}" at position {len(input_string)}') # Raise an exception if an unexpected character is encountered
         return tokens # Return the list of tokens
-
-    def tokenize_file(self, file_path):  #Metodo para leer una linea de un archivo
-        with open(file_path, 'r') as file:
-            content = file.read().replace('\n', '') # Read the file and remove newline characters
-        return self.tokenize(content)
+    
+    def tokenize_files_in_directory(self, directory_path):   # Verification that the directory exists
+        if not os.path.isdir(directory_path):
+            raise Exception('Error: directory does not exist')
+        tokens = []
+        for filename in os.listdir(directory_path):   # File extension verification
+            if filename.endswith('.ar'):
+                file_path = os.path.join(directory_path, filename)
+                with open(file_path, 'r') as file:   # File reading
+                    content = file.read().replace('\n', '')
+                tokens.extend(self.tokenize(content))
+        return tokens
 
 
 """
