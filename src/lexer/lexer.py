@@ -36,18 +36,3 @@ class Lexer:
                     content = file.read().replace('\n', '')
                 tokens.extend(self.tokenize(content))
         return tokens
-
-
-"""
-Tokenizes the input string by matching it against a list of predefined tokens.
-
-Args:
-    input_string (str): The string to be tokenized.
-
-Returns:
-    list: A list of tuples representing the tokens found in the input string. Each tuple
-    contains the name of the token and its corresponding value.
-
-Raises:
-    Exception: If an unexpected character is encountered in the input string.
-"""
