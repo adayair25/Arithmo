@@ -1,4 +1,4 @@
-from lexer.tokens import TOKENS # Import the list of TOKENS
+from lexer.tokens import TOKENS #type: ignore # Import the list of TOKENS
 
 SYNTAX = {
     'VAR': f'''

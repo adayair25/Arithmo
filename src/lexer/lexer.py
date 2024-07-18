@@ -25,14 +25,3 @@ class Lexer:
                 raise Exception(f'Error: unexpected character "{input_string[0]}" at position {len(input_string)}') # Raise an exception if an unexpected character is encountered
         return tokens # Return the list of tokens
     
-    def tokenize_files_in_directory(self, directory_path):   # Verification that the directory exists
-        if not os.path.isdir(directory_path):
-            raise Exception('Error: directory does not exist')
-        tokens = []
-        for filename in os.listdir(directory_path):   # File extension verification
-            if filename.endswith('.ar'):
-                file_path = os.path.join(directory_path, filename)
-                with open(file_path, 'r') as file:   # File reading
-                    content = file.read().replace('\n', '')
-                tokens.extend(self.tokenize(content))
-        return tokens
