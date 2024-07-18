@@ -16,5 +16,19 @@ SYNTAX = {
          SEMICOLON: /{TOKENS['SEMICOLON']}/
          
          %ignore " "           // Disregard spaces in text
-       '''
+       ''',
+       'FUNCTION': f'''
+         start: code_block+
+         code_block: set_function
+         
+         set_function: FUNCTION IDENTIFIER LPAREN RPAREN LBRACE RBRACE SEMICOLON
+
+          FUNCTION: /{TOKENS['FUNCTION']}/
+          IDENTIFIER: /{TOKENS['IDENTIFIER']}/
+          LPAREN: /{TOKENS['LPAREN']}/
+          RPAREN: /{TOKENS['RPAREN']}/
+          LBRACE: /{TOKENS['LBRACE']}/
+          RBRACE: /{TOKENS['RBRACE']}/
+          SEMICOLON: /{TOKENS['SEMICOLON']}/
+         '''
 }
