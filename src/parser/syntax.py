@@ -1,7 +1,7 @@
-from lexer.tokens import TOKENS #type: ignore # Import the list of TOKENS
+from lexer.tokens import TOKENS  # type: ignore # Import the list of TOKENS
 
 SYNTAX = {
-    'VAR': f'''
+    "VAR": f"""
          start: code_block+
          code_block: set_var 
          
@@ -16,9 +16,9 @@ SYNTAX = {
          SEMICOLON: /{TOKENS['SEMICOLON']}/
           COMMA: /{TOKENS['COMMA']}/
          
-         %ignore " "           // Disregard spaces in text
-       ''',
-       'FUNCTION': f'''
+         %ignore " "
+       """,
+    "FUNCTION": f"""
          start: code_block+
          code_block: set_function
          
@@ -31,5 +31,5 @@ SYNTAX = {
           LBRACE: /{TOKENS['LBRACE']}/
           RBRACE: /{TOKENS['RBRACE']}/
           SEMICOLON: /{TOKENS['SEMICOLON']}/
-         '''
+         """,
 }
