@@ -1,5 +1,1 @@
-fn Myfn () {
-
-};
-
-var x: int = 1;
+a = 1+2
