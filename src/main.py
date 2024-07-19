@@ -2,7 +2,7 @@ from lexer.lexer import Lexer  # Import the lexer
 from lexer.tokens import TOKENS  # Import the list of TOKENS
 from parser.parser import Parser  # Import the parser
 from parser.syntax import SYNTAX  # Import the list of SYNTAX
-from input_files.validation import Validation
+from input_files.validation import Validation  # Import the input file validation
 
 lexer = Lexer()  # Create a lexer object
 lexer.add_token(TOKENS)  # Add the tokens to the lexer

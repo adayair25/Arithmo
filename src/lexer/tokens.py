@@ -21,6 +21,7 @@ TOKENS = [
     ("RETURN", r"return"),  # return statement
     ("COLON", r":"),  # search for :
     ("TYPES", r"(srg|int|flt|dbl|bool)"),  # search for int, float, double, bool
+    ("BOOLEAN", r"\b(true|false)\b"),  # search for true, false
     ("GREATER", r">"),  # search for >
     ("LESS", r"<"),  # search for <
     ("EQUALITY", r"="),  # search for =
@@ -40,8 +41,7 @@ TOKENS = [
     ("PLUS_DOUBLE", r"\+\+"),  # search for ++
     ("VALUE", r"\".*?\"|\d+(\.\d+)?"),  # search for value
     ("SEMICOLON", r";"),  # search for ;
-    ("IDENTIFIER", r"\w+"),  # search for variable name
-    ("BOOLEAN", r"\b(true|false)\b"),  # search for true, false
+    ("IDENTIFIER", r"\w+"),  # search for variable name without spaces
 ]
 
 # Transform the tokens into a dictionary
