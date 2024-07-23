@@ -1,5 +1,5 @@
-import re # Import the regular expression module
-
+import re
+import os
 class Lexer:
     def __init__(self):
         self.tokens = []
@@ -12,7 +12,7 @@ class Lexer:
         tokens = []
         while len(input_string) > 0:
             match = None # Initialize match to None
-            input_string = input_string.strip(" ") # Remove leading whitespace
+            input_string = input_string.strip(" \n") # Remove leading whitespace
             for name, regex in self.tokens: 
                 match = regex.match(input_string) # Match the pattern against the input string
                 if match:
@@ -21,19 +21,7 @@ class Lexer:
                     input_string = input_string[len(value):] # Remove the token from the input string
                     break
             if not match:
-                raise Exception('Error: unexpected character %s' % input_string[0]) # Raise an exception if an unexpected character is encountered
+                print(f"Unexpected character: '{input_string[0]}'") # Added for debugging
+                raise Exception(f'Error: unexpected character "{input_string[0]}" at position {len(input_string)}') # Raise an exception if an unexpected character is encountered
         return tokens # Return the list of tokens
-
-"""
-Tokenizes the input string by matching it against a list of predefined tokens.
-
-Args:
-    input_string (str): The string to be tokenized.
-
-Returns:
-    list: A list of tuples representing the tokens found in the input string. Each tuple
-    contains the name of the token and its corresponding value.
-
-Raises:
-    Exception: If an unexpected character is encountered in the input string.
-"""
+    
