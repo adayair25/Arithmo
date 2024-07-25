@@ -1,12 +1,18 @@
 from lexer.tokens import TOKENS  # type: ignore # Import the list of TOKENS
 from lark import Transformer, v_args
-SYNTAX = """ 
-    ?start: sum
+
+SYNTAX = f""" 
+    ?start: exp+
+
+    ?exp: sum
       | NAME "=" sum -> assign
+      | join -> concat
+    ?var: VAR NAME "=" sum
+    ?join: "join" LPAREN NAME+ RPAREN
 
     ?sum: prod 
       | sum "+" prod -> add
-      | sum "-" prod -> sub
+      | sum "-" prod -> sub 
 
     ?prod: atom
       | prod "*" atom -> mul
@@ -14,28 +20,35 @@ SYNTAX = """
 
     ?atom: NUMBER -> number
       | "-" atom -> neg
-      | NAME -> var
+      | var NAME -> variable
       | "(" sum ")"
-
-    %import common.CNAME -> NAME
-    %import common.NUMBER
+    
+    
+    VAR: /{TOKENS["VAR"]}/
+    COMMA: /{TOKENS["COMMA"]}/
+    LPAREN: /{TOKENS["LPAREN"]}/
+    RPAREN: /{TOKENS["RPAREN"]}/
+    NAME: /{TOKENS["IDENTIFIER"]}/
+    NUMBER: /{TOKENS["VALUE"]}/
     %import common.WS_INLINE
-
     %ignore WS_INLINE
 """
 
 @v_args(inline=True)    # Affects the signatures of the methods
 class CalculateTree(Transformer):
     from operator import add, sub, mul, truediv as div, neg
-    number = float
+    number = int
 
     def __init__(self):
         self.vars = {}
 
+    def join (self, *args):
+        return args
+    
     def assign_var(self, name, value):
         self.vars[name] = value
         return value
-
+    
     def var(self, name):
         try:
             return self.vars[name]
