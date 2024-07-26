@@ -2,10 +2,9 @@ from Polynomial import Polynomial
 from Polynomial_derivate import Polynomial_derivate
 from Trigonometry import Trigonometry
 from Exponential import Exponential
-from utils import get_function_and_derivative
+from utils import get_function_and_derivative,get_derivative
 
-
-def derivative_general(mode, variable='x', *args, **kwargs):
+def derivative_general(mode, variable='t', *args, **kwargs):
     if mode == 'sum':
         functions = args
         constants = kwargs.get('constants', [1] * len(functions))
@@ -32,7 +31,7 @@ def derivative_general(mode, variable='x', *args, **kwargs):
         if len(functions) < 2 or len(functions) > 3:
             raise ValueError("Product needed at least two functions")
         
-        terms = [get_function_and_derivative(func, const) for func, const in zip(functions, constants)]
+        terms = [get_function_and_derivative(func, const,variable) for func, const in zip(functions, constants)]
         
         if len(terms) == 2:
             (f1, f1_derivative), (f2, f2_derivative) = terms
@@ -50,7 +49,7 @@ def derivative_general(mode, variable='x', *args, **kwargs):
         functions = args
         constants = kwargs.get('constants', [1] * len(functions))
         
-        (f1, f1_derivative), (f2, f2_derivative) = [get_function_and_derivative(func, const) for func, const in zip(functions, constants)]
+        (f1, f1_derivative), (f2, f2_derivative) = [get_function_and_derivative(func, const,variable) for func, const in zip(functions, constants)]
         
         quotient_derivative = f'(({f2})*({f1_derivative}) - ({f1})*({f2_derivative}))/(({f2})^2)'
         return quotient_derivative
@@ -59,20 +58,17 @@ def derivative_general(mode, variable='x', *args, **kwargs):
         if len(args) != 2:
             raise ValueError("mode chain need only two functions")
         
-        outer_func, inner_func = args
-        outer_const = kwargs.get('constant_outer', 1)
-        inner_const = kwargs.get('constant_inner', 1)
-        
-        outer_func_str, outer_func_derivative = get_function_and_derivative(outer_func, outer_const)
-        inner_func_str, inner_func_derivative= get_function_and_derivative(inner_func, inner_const)
-        
-        chain_derivative = f'{outer_func_derivative}({inner_func_str}) * {inner_func_derivative}'
-        return chain_derivative
+        functions = args
+        constants = kwargs.get('constants', [1] * len(functions))
+        f=functions[0]
+        g=functions[1]
+        f_der=get_derivative(f,constants[0],f'{g}({variable})')
+        g_der=get_derivative(g,constants[1],variable)
+        chain='('+f_der+')*'+g_der
+        return chain
 
     else:
         raise ValueError("mode no valid")
 
-
-# example
-a = derivative_general('chain', 'x', 'exp', 'sin', constant_outer=1, constant_inner=1)
+a = Polynomial_derivate('x', [0,0,1], 1)
 print(a)
