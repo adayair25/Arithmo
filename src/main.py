@@ -2,7 +2,7 @@ from lexer.lexer import Lexer  # Import the lexer
 from lexer.tokens import TOKENS  # Import the list of TOKENS
 from parser.parser import Parser  # Import the parser
 from parser.syntax import SYNTAX  # Import the list of SYNTAX
-from st.ast import CalculateTree, Interpreter
+from st.ast import CalculateTree # Interpreter
 from input_files.validation import Validation  # Import the input file validation
 
 lexer = Lexer()  # Create a lexer object
@@ -11,14 +11,14 @@ directory = "src/input_files" # Directory of the input files
 input_file = Validation(directory)  
 content = input_file.read_files()   
 tokens = lexer.tokenize(content)
-parser = Parser(SYNTAX)
-parsing = parser.parsing(tokens)
+parser = Parser(SYNTAX, CalculateTree())
 
-interpreter = Interpreter()
-interpreter.get_result(parsing)
+#parsing = parser.parsing(tokens)
+#interpreter = Interpreter()
+#interpreter.get_result(parsing)
 
 #print(tokens)
-#print(parser.parsing(tokens))  # TEST CODE 
+print(parser.parsing(tokens))  # TEST CODE 
 
 """
 parser = None
