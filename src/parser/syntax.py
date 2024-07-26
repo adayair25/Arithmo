@@ -1,16 +1,13 @@
 from lexer.tokens import TOKENS  # type: ignore # Import the list of TOKENS
-from lark import Transformer, v_args
 
 SYNTAX = f""" 
     ?start: exp+
 
     ?exp: sum
-      | VAR IDENTIFIER "=" sum -> assign
-      | join -> concat
-    
-    ?var: VAR IDENTIFIER "=" sum
+      | VAR IDENTIFIER EQUAL sum SEMICOLON -> assign 
 
-    ?join: "join" LPAREN VALUE+ RPAREN
+    ?var: IDENTIFIER SEMICOLON -> show_var
+
 
     ?sum: prod 
       | sum "+" prod -> add
@@ -27,37 +24,19 @@ SYNTAX = f"""
     
     
     VAR: /{TOKENS["VAR"]}/
+    EQUAL: /{TOKENS["EQUALITY"]}/
     COMMA: /{TOKENS["COMMA"]}/
     LPAREN: /{TOKENS["LPAREN"]}/
     RPAREN: /{TOKENS["RPAREN"]}/
     IDENTIFIER: /{TOKENS["IDENTIFIER"]}/
     VALUE: /{TOKENS["VALUE"]}/
     NUMBER: /{TOKENS["VALUE"]}/
+    SEMICOLON: /{TOKENS["SEMICOLON"]}/
+    
     %import common.WS_INLINE
     %ignore WS_INLINE
+    %ignore " "
 """
-
-@v_args(inline=True)    # Affects the signatures of the methods
-class CalculateTree(Transformer):
-    from operator import add, sub, mul, truediv as div, neg
-     
-    def concat (self, args):
-        return f"{args}"
-
-    number = int
-
-    def __init__(self):
-        self.vars = {}
-
-    def assign_var(self, name, value):
-        self.vars[name] = value
-        return value
-    
-    def var(self, name):
-        try:
-            return self.vars[name]
-        except KeyError:
-            raise Exception("Variable not found: %s" % name)
 
 '''
 def main():
