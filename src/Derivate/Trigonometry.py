@@ -11,6 +11,4 @@ def Trigonometry(funcion, variable, constant=1):
     equivalent = f'{trig_derivatives[funcion]}({variable})'
     if constant != 1:
         equivalent = f'{constant}*{equivalent}'
-f'{const}*{func}({variable})' if const != 1 else f'{func}({variable})'), Simple_Trig_Derivative(func, variable, const)
-
     return equivalent
