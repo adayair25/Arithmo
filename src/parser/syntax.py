@@ -5,10 +5,12 @@ SYNTAX = f"""
     ?start: exp+
 
     ?exp: sum
-      | NAME "=" sum -> assign
+      | VAR IDENTIFIER "=" sum -> assign
       | join -> concat
-    ?var: VAR NAME "=" sum
-    ?join: "join" LPAREN NAME+ RPAREN
+    
+    ?var: VAR IDENTIFIER "=" sum
+
+    ?join: "join" LPAREN VALUE+ RPAREN
 
     ?sum: prod 
       | sum "+" prod -> add
@@ -20,7 +22,7 @@ SYNTAX = f"""
 
     ?atom: NUMBER -> number
       | "-" atom -> neg
-      | var NAME -> variable
+      | VAR IDENTIFIER -> variable
       | "(" sum ")"
     
     
@@ -28,7 +30,8 @@ SYNTAX = f"""
     COMMA: /{TOKENS["COMMA"]}/
     LPAREN: /{TOKENS["LPAREN"]}/
     RPAREN: /{TOKENS["RPAREN"]}/
-    NAME: /{TOKENS["IDENTIFIER"]}/
+    IDENTIFIER: /{TOKENS["IDENTIFIER"]}/
+    VALUE: /{TOKENS["VALUE"]}/
     NUMBER: /{TOKENS["VALUE"]}/
     %import common.WS_INLINE
     %ignore WS_INLINE
@@ -37,14 +40,15 @@ SYNTAX = f"""
 @v_args(inline=True)    # Affects the signatures of the methods
 class CalculateTree(Transformer):
     from operator import add, sub, mul, truediv as div, neg
+     
+    def concat (self, args):
+        return f"{args}"
+
     number = int
 
     def __init__(self):
         self.vars = {}
 
-    def join (self, *args):
-        return args
-    
     def assign_var(self, name, value):
         self.vars[name] = value
         return value

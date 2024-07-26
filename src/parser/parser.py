@@ -1,4 +1,4 @@
-from lark import Lark, Token
+from lark import Lark
 from parser.syntax import CalculateTree
 
 class Parser:
@@ -9,5 +9,5 @@ class Parser:
     #def parsing(self, tokens):
      #   return self.parser.parse(''.join(token[1] for token in tokens)).pretty() # Devuelve el árbol de análisis
     def parsing(self, text):
-        return self.parser.parse(text).pretty() # Devuelve el árbol de análisis
+        return self.parser.parse(text)#.pretty() # Devuelve el árbol de análisis
     

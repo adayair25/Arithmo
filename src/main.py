@@ -14,7 +14,8 @@ tokens = lexer.tokenize(content)
 
 parser = Parser(SYNTAX) 
 
-print(parser.parsing("join(pedro y)" ))
+
+print(parser.parsing('12 + 3 '))  # Parse the tokens
 
 """
 parser = None
