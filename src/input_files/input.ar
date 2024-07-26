@@ -1,1 +1,1 @@
-var c = 1 + 1;
+deriv_gen("sum","t",[2,2,2,3],"sin");

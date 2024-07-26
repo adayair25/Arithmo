@@ -1,8 +1,8 @@
-from Polynomial import Polynomial
-from Polynomial_derivate import Polynomial_derivate
-from Trigonometry import Trigonometry
-from Exponential import Exponential
-from utils import get_function_and_derivative,get_derivative
+#from methods.Derivate.Polynomial import Polynomial
+from methods.Derivate.Polynomial_derivate import Polynomial_derivate
+from methods.Derivate.Trigonometry import Trigonometry
+from methods.Derivate.Exponential import Exponential
+from methods.Derivate.utils import get_function_and_derivative,get_derivative
 
 def derivative_general(mode, variable='t', *args, **kwargs):
     if mode == 'sum':
@@ -70,9 +70,10 @@ def derivative_general(mode, variable='t', *args, **kwargs):
     else:
         raise ValueError("mode no valid")
 
-sum1=derivative_general('sum','t',[2,2,2,3],'sin')
-prod1=derivative_general('product','k',[0,1],'sin',constants=[2,5])
-quotient1=derivative_general('quotient','x','log','exp',constants=[1,9])
-chains=derivative_general('chain','z','exp','log',constants=[2,2])
+#sum1=derivative_general('sum','t',[2,2,2,3],'sin')
+#prod1=derivative_general('product','k',[0,1],'sin',constants=[2,5])
+#quotient1=derivative_general('quotient','x','log','exp',constants=[1,9])
+#chains=derivative_general('chain','z','exp','log',constants=[2,2])
 
-print(sum1,'\n',prod1,'\n',quotient1,'\n',chains)
+#print(sum1)
+#print(sum1,'\n',prod1,'\n',quotient1,'\n',chains)

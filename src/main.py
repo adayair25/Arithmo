@@ -7,13 +7,13 @@ from input_files.validation import Validation  # Import the input file validatio
 
 lexer = Lexer()  # Create a lexer object
 lexer.add_token(TOKENS)  # Add the tokens to the lexer
-
-directory = "src/input_files"
-input_file = Validation(directory)
-content = input_file.read_files()
+directory = "src/input_files" # Directory of the input files
+input_file = Validation(directory)  
+content = input_file.read_files()   
 tokens = lexer.tokenize(content)
 parser = Parser(SYNTAX, CalculateTree())
 
+#print(tokens)
 print(parser.parsing(tokens))  # TEST CODE 
 
 """

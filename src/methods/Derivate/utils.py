@@ -1,7 +1,7 @@
-from Polynomial import Polynomial
-from Polynomial_derivate import Polynomial_derivate
-from Trigonometry import Trigonometry
-from Exponential import Exponential
+from methods.Derivate.Polynomial import Polynomial
+from methods.Derivate.Polynomial_derivate import Polynomial_derivate
+from methods.Derivate.Trigonometry import Trigonometry
+from methods.Derivate.Exponential import Exponential
 
 
 def get_function_and_derivative(func, const, variable="y"):

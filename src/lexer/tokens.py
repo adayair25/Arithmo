@@ -2,6 +2,11 @@ TOKENS = [
     ("VAR", r"var"),  # variable declaration
     ("FUNCTION", r"fn"),  # function declaration
     ("IF", r"if\s"),  # if statement
+    ("MODES", r"(\"sum\"|\"product\"|\"quotient\"|\"chain\")"),  # derivative general mode
+    ("FUNCTION_EXP", r"(\"sin\"|\"cos\"|\"tan\"|\"cot\"|\"csc\"|\"sec\"|\"exp\"|\"log\")"),  # search for sin, cos, tan, exp, log, sqrt
+    ("CONSTANTS", r"constants"),
+    ("FUNCTIONS_CALL", r"deriv_gen"),  # derivative general function call
+    ("STRING", r"\"t\""),  # search for string
     ("ELSE", r"else\s"),  # else statement
     ("WHILE", r"while\s"),  # while statement
     ("FOR", r"for\s"),  # for statement
@@ -21,6 +26,7 @@ TOKENS = [
     ("RETURN", r"return"),  # return statement
     ("COLON", r":"),  # search for :
     ("TYPES", r"(srg|int|flt|dbl|bool)"),  # search for int, float, double, bool
+    ("INT", r"\d+"),  # search for integer
     ("BOOLEAN", r"\b(true|false)\b"),  # search for true, false
     ("GREATER", r">"),  # search for >
     ("LESS", r"<"),  # search for <
