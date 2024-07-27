@@ -4,7 +4,7 @@ SYNTAX = f"""
     ?start: exp+
     ?exp: deriv_gen
     
-    ?deriv_gen: FUNCTIONS_CALL LPAREN MODES COMMA STRING? COMMA ( ( ( LBRACKET (INT COMMA INT COMMA INT COMMA INT) RBRACKET ) | FUNCTION_EXP) COMMA ) ( ( ( LBRACKET (INT COMMA INT COMMA INT COMMA INT) RBRACKET ) | FUNCTION_EXP)) (CONSTANTS EQUAL LBRACKET (INT COMMA)+ RBRACKET)? RPAREN SEMICOLON
+    ?deriv_gen: FUNCTIONS_CALL LPAREN MODES COMMA IDENTIFIER? COMMA (LIST_POLY | FUNCTION_EXP) COMMA? (LIST_POLY | FUNCTION_EXP)? COMMA? (CONSTANTS LIST_POLY)? RPAREN SEMICOLON
       | VAR IDENTIFIER EQUAL sum SEMICOLON -> assign 
 
     ?sum: prod 
@@ -38,29 +38,9 @@ SYNTAX = f"""
     VALUE: /{TOKENS["VALUE"]}/
     INT: /{TOKENS["INT"]}/
     SEMICOLON: /{TOKENS["SEMICOLON"]}/
+    LIST_POLY: /{TOKENS["LIST_POLY"]}/
     
     %import common.WS_INLINE
     %ignore WS_INLINE
     %ignore " "
 """
-# ?deriv_gen: "deriv_gen" LPAREN MODES COMMA (STRING)? COMMA ( (LBRACKET (INT COMMA)+ RBRACKET ) | FUNCTION_EXP )+ (CONSTANTS EQUAL LBRACKET (INT COMMA)+ RBRACKET)? -> derivative_general
-
-'''
-def main():
-    while True:
-        try:
-            s = input('> ')
-        except EOFError:
-            break
-        print(calc(s))
-
-
-def test():
-    print(calc("a = 1+2"))
-    print(calc("1+a*-3"))
-
-
-if __name__ == '__main__':
-    # test()
-    main()
-'''    

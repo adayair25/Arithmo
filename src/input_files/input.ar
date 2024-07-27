@@ -1,1 +1,1 @@
-deriv_gen("sum","t","cos","sin");
+deriv_gen(chain,z,exp,log,constants=[2,2,3]);
