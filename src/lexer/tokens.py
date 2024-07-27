@@ -3,7 +3,10 @@ TOKENS = [
     ("FUNCTION", r"fn"),  # function declaration
     ("IF", r"if\s"),  # if statement
     ("MODES", r"(sum|product|quotient|chain)"),  # derivative general mode
-    ("FUNCTION_EXP", r"(sin|cos|tan|cot|csc|sec|exp|log)"),  # search for sin, cos, tan, exp, log, sqrt
+    (
+        "FUNCTION_EXP",
+        r"(sin|cos|tan|cot|csc|sec|exp|log)",
+    ),  # search for sin, cos, tan, exp, log, sqrt
     ("CONSTANTS", r"constants="),
     ("LIST_POLY", r"\[[0-9]\,[0-9]\,[0-9]\]"),  # search for list of polynomials [1,2,3]
     ("FUNCTIONS_CALL", r"deriv_gen"),  # derivative general function call
@@ -48,7 +51,7 @@ TOKENS = [
     ("PLUS_DOUBLE", r"\+\+"),  # search for ++
     ("VALUE", r"\".*?\"|\d+(\.\d+)?"),  # search for value
     ("SEMICOLON", r";"),  # search for ;
-    ("IDENTIFIER", r"\w+"), # search for variable name without spaces 
+    ("IDENTIFIER", r"\w+"),  # search for variable name without spaces
 ]
 
 # Transform the tokens into a dictionary

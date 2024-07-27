@@ -1,6 +1,5 @@
 import os
 
-
 class Validation:
 
     def __init__(self, directory_path):
