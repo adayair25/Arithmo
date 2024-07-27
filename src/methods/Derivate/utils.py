@@ -3,7 +3,6 @@ from methods.Derivate.Polynomial_derivate import Polynomial_derivate
 from methods.Derivate.Trigonometry import Trigonometry
 from methods.Derivate.Exponential import Exponential
 
-
 def get_function_and_derivative(func, const, variable="y"): # Define the function
     if func in ['sin', 'cos', 'tan', 'cot', 'csc', 'sec']: # Check if the function is a trigonometric function
         if const != 1: # Check if the constant is different from 1

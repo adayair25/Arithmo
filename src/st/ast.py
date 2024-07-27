@@ -1,5 +1,6 @@
 from lark import Transformer, v_args
 from methods.Derivate.Derivative_general import derivative_general as dev
+from methods.Derivate.utils import get_derivative as global_dev
 class Interpreter:
     def __init__(self):
         self.vars = {}
@@ -51,6 +52,52 @@ class Interpreter:
                 action(child)
 
         return print(dev(MODE, VARIABLE, FUNCTIONS[0], FUNCTIONS[1])) # Return the derivative
+    
+    def global_deriv(self, tree): #global_dev
+        VARIABLE = None
+        VALUE = None
+        FUNCTIONS = []
+        CONSTANTS = [] 
+        constant = False
+
+        def handle_identifier(child):
+            nonlocal VARIABLE
+            VARIABLE = child.value
+
+        def handle_list_poly(child):
+            nonlocal VALUE
+            if constant:
+                VALUE = int(child.value)
+            else:
+                FUNCTIONS.append(eval(child.value))
+                
+        def handle_constants(child):
+            nonlocal constant
+            constant = True
+
+        def handle_function_exp(child):
+            FUNCTIONS.append(child.value)
+        
+        def handle_return(child):
+            if constant:
+                return print(global_dev(FUNCTIONS[0], VALUE, VARIABLE))
+            else:
+                return print(global_dev(FUNCTIONS[0], VARIABLE))
+
+        actions = {
+            "IDENTIFIER": handle_identifier,
+            "LIST_POLY": handle_list_poly,
+            "CONSTANTS": handle_constants,
+            "FUNCTION_EXP": handle_function_exp,
+            "SEMICOLON": handle_return
+        }
+
+        for child in tree.children:
+            action = actions.get(child.type)
+            if action:
+                action(child)
+
+        
     
     def set_var(self, tree): # Search for the nodes to get the values and assign the variable
         variable_name = None # Initialize the variable name

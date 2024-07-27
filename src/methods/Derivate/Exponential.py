@@ -11,3 +11,5 @@ def Exponential(funcion, variable, constant=1): # Define the function
     if constant != 1: # Check if the constant is different from 1
         equivalent = f'{constant}*{equivalent}' # Multiply the constant by the equivalent
     return equivalent # Return the equivalent
+
+#print(Exponential('exp', 'x', 2)) # Test the function
