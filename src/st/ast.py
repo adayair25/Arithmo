@@ -1,4 +1,5 @@
 from lark import Transformer, v_args
+from methods.Derivate import Derivative_general
 @v_args(inline=True)  # Affects the signatures of the methods #
 class CalculateTree(Transformer):
     from operator import add, sub, mul, truediv as div, neg
@@ -8,16 +9,18 @@ class CalculateTree(Transformer):
     def __init__(self):
         self.vars = {}
 
-    @v_args(meta=True)
-    def assign(self, meta, var, value):
-        self.vars[var] = value
-        return self.vars[var]
+    def assign_var(self, var, value):
+       self.vars[var] = value
+       return value
 
     def var(self, var):
         try:
             return self.vars[var]
         except KeyError:
             raise Exception("Variable not found: %s" % var)
+        
+    def derivative_general(self, function_call, mode, variable=None, first_exp=None, second_exp=None, constants=None):
+        return Derivative_general(mode, variable, first_exp, second_exp, constants)
         
 """
 class Interpreter:
