@@ -3,10 +3,7 @@ TOKENS = [
     ("FUNCTION", r"fn"),  # function declaration
     ("IF", r"if\s"),  # if statement
     ("MODES", r"(sum|product|quotient|chain)"),  # derivative general mode
-    (
-        "FUNCTION_EXP",
-        r"(sin|cos|tan|cot|csc|sec|exp|log)",
-    ),  # search for sin, cos, tan, exp, log, sqrt
+    ("FUNCTION_EXP",r"(sin|cos|tan|cot|csc|sec|exp|log)",),  # search for sin, cos, tan, exp, log, sqrt
     ("CONSTANTS", r"constants="),
     ("LIST_POLY", r"\[[0-9]\,[0-9]\,[0-9]\]"),  # search for list of polynomials [1,2,3]
     ("FUNCTIONS_CALL", r"deriv_gen"),  # derivative general function call

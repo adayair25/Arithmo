@@ -1,11 +1,11 @@
 from lexer.tokens import TOKENS  # type: ignore # Import the list of TOKENS
 
 SYNTAX = f""" 
-    ?start: exp+
-    ?exp: deriv_gen
+    ?start: (deriv_gen | set_var | show_var)
     
+    ?set_var: VAR IDENTIFIER EQUAL (VALUE | deriv_gen ) SEMICOLON
     ?deriv_gen: FUNCTIONS_CALL LPAREN MODES COMMA IDENTIFIER? COMMA (LIST_POLY | FUNCTION_EXP) COMMA? (LIST_POLY | FUNCTION_EXP)? COMMA? (CONSTANTS LIST_POLY)? RPAREN SEMICOLON
-      | VAR IDENTIFIER EQUAL sum SEMICOLON -> assign 
+    ?show_var: IDENTIFIER SEMICOLON
 
     ?sum: prod 
       | sum "+" prod -> add
