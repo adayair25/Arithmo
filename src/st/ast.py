@@ -58,28 +58,28 @@ class Interpreter:
         VALUE = None
         FUNCTIONS = []
         CONSTANTS = [] 
-        constant = False
+        constant_bool = False
 
         def handle_identifier(child):
             nonlocal VARIABLE
             VARIABLE = child.value
 
         def handle_list_poly(child):
+            FUNCTIONS.append(eval(child.value))
+
+        def handle_value(child):
             nonlocal VALUE
-            if constant:
-                VALUE = int(child.value)
-            else:
-                FUNCTIONS.append(eval(child.value))
+            VALUE = int(child.value)
                 
         def handle_constants(child):
-            nonlocal constant
-            constant = True
+            nonlocal constant_bool
+            constant_bool = True
 
         def handle_function_exp(child):
             FUNCTIONS.append(child.value)
         
-        def handle_return(child):
-            if constant:
+        def handle_return(child):   
+            if constant_bool:
                 return print(global_dev(FUNCTIONS[0], VALUE, VARIABLE))
             else:
                 return print(global_dev(FUNCTIONS[0], VARIABLE))
@@ -88,6 +88,7 @@ class Interpreter:
             "IDENTIFIER": handle_identifier,
             "LIST_POLY": handle_list_poly,
             "CONSTANTS": handle_constants,
+            "VALUE": handle_value,
             "FUNCTION_EXP": handle_function_exp,
             "SEMICOLON": handle_return
         }

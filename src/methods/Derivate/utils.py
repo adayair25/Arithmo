@@ -59,3 +59,4 @@ def get_derivative(func, const, variable="y"): # Define the function
                 return f_der
             else:
                 raise ValueError("Is needed a valid function") # Raise an error
+                
