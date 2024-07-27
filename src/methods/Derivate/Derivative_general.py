@@ -71,9 +71,11 @@ def derivative_general(mode, variable='t', *args, **kwargs):
         raise ValueError("mode no valid")
 
 #sum1=derivative_general('sum','t',[2,2,2,3],'sin')
+#sum2=derivative_general('sum','t','cos','sin')
 #prod1=derivative_general('product','k',[0,1],'sin',constants=[2,5])
 #quotient1=derivative_general('quotient','x','log','exp',constants=[1,9])
 #chains=derivative_general('chain','z','exp','log',constants=[2,2])
 
+#print(sum2)
 #print(sum1)
 #print(sum1,'\n',prod1,'\n',quotient1,'\n',chains)
