@@ -103,26 +103,14 @@ class Interpreter:
     def set_var(self, tree): # Search for the nodes to get the values and assign the variable
         variable_name = None # Initialize the variable name
         assigned_value = None # Initialize the assigned value
-        function_bool = False
-        concat = None
-        print(tree)
+  
         for children in tree.children: # Iterate over the children
             if children.type == "IDENTIFIER": # Check if the child is an identifier
                 variable_name = children.value # Get the variable name
             elif children.type == "VALUE": # Check if the child is a value
                 assigned_value = children.value # Get the assigned value
-            elif children.type == "FUNCTIONS_CALL":
-                function_bool = True
-            elif (children.type == "SEMICOLON") and function_bool:
-                function_bool = False
-            
-            if function_bool:
-                concat = ''.join(children.value)
-                
-        if children.type == "FUNCTIONS_CALL":
-            self.vars[variable_name] = concat
-        else:
-            self.vars[variable_name] = assigned_value
+     
+        self.vars[variable_name] = assigned_value
 
     def show_var(self, tree):
         for children in tree.children:

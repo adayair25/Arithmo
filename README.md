@@ -5,33 +5,36 @@
 
 ## Guía de inicio
 
-<p>En Arithmo, la declaración de variables es simple, solamente basta con escribir el nombre de la palabra `var` seguido del tipo de datos y posteriormente, el nombre de la variable (es opcional si se quiere inicializar):
+<p>En Arithmo, la declaración de variables es simple, solamente basta con escribir el nombre de la palabra `var` seguido del tipo de datos y posteriormente, el nombre de la variable:
 </p>
 
 ```javascript
-var x: srg = "Hello World"; 
+var x = "Hello World"; 
 ```
-
-<p>Tambien se pueden declarar variables que no se les haya asignado un valor del mismo tipo en una sola línea:
-</p>
+<p>En el caso de querer llamar a la variable anteriormente declarada, se utiliza la siguiente sintaxis:
 
 ```javascript
-var x,y: int;
+x;  // Salida: "Hello World"
 ```
 
-<p>En el caso de las constantes su declaración es similar a la de las variables, solo que en lugar de la palabra `var` se utiliza `const` y el valor de la constante no puede ser modificado:
-</p>
+<p>Para obtener derivadas simples, como las trigonométricas, de polinomio o exponenciales, se llaman de la siguiente manera:
 
 ```javascript
-const x: int = 10;
+global_deriv([1,2,3],constants=2,y); // Salida: (2)*(2x^0)+(2)*(6x^1)
 ```
-
-<p>En Arithmo se pueden realizar operaciones aritméticas de manera sencilla, como se muestra a continuación:
-</p>
 
 ```javascript
-var x: int = 10 + 10; //salida: 20 
+global_deriv(cos,constants=1,y); // Salida: -sin(y)
 ```
+
+</p>
+
+<p>En el caso de derivadas de la cadena, suma, producto o cociente, es como sigue:
+
+```javascript
+deriv_gen(chain,z,[1,2,4],cos); // Salida: (2cos(z)^0+8cos(z)^1)*-sin(z)
+```
+</p>
 
 ## Tipos de datos
 
@@ -44,20 +47,10 @@ var x: int = 10 + 10; //salida: 20
 * `bool` : booleano
 * `dbl` : doble 
 
-## Funciones
-
-<p>En Arithmo, la declaración de funciones es simple,con solo escribir el nombre de la palabra reservada `fn`, posteriormente, el nombre de la función:
-</p>
-
-```javascript
-fn suma(a: int, b: int): int {
-    return a + b;
-}
-```
 
 ## Operadores
 
-<p>El lenguaje está estandarizado en el uso de operadores básicos, tales como:
+<p>Arithmo está estandarizado en el uso de operadores básicos, tales como:
 </p>
 
 * `+` : adición
@@ -82,78 +75,12 @@ fn suma(a: int, b: int): int {
 
 ##  Estrucuturas de datos
 
-<p>Arithmo permite el uso de estructuras de datos convencionales como lo son:
+<p>El lenguaje permite el uso de estructuras de datos convencionales como lo son:
 </p>
 
 * `[]` : array 
 * `{}` : diccionario
 * `[][]` : matriz
-
-## Bucles
-<p>El lenguaje declara de esta forma los ciclos:
-</p>
-
-* `while`
-
-```javascript
-while () {
-    var x: int = 0;
-    while x < 10 {
-        x++;
-    }
-}
-```
-
-* `do while`
-
-```javascript
-do {
-    var x: int = 0;
-    while x < 10 {
-        x++;
-    }
-} while ();
-```
-
-* `for`
-
-```javascript
-for (var i: int = 0; i < 10; i++) {
-    print(i);
-}
-```
-
-## Condicionales
-<p>Arithmo define dos condicionales de la siguiente manera:
-</p>
-
-* `if else`
-
-```javascript
-if (x == 10) {
-    print("x es igual a 10");
-} else if (x != 10) {
-    print("x no es igual a 10");
-} else {
-    return 0;
-}
-```
-
-* `switch`
-
-```javascript
-switch (x) {
-    case 1:
-        print("x es igual a 1");
-        continue;
-    case 2:
-        print("x es igual a 2");
-        continue;
-    deft:
-        print("x no es igual a 1 o 2");
-        break;
-}
-```
 
 ## Palabras reservadas
 
@@ -161,7 +88,6 @@ switch (x) {
 </p>
 
 * `var` : variable
-* `const` : constante
 * `fn` : función
 * `if` : condición
 * `else` : condición
